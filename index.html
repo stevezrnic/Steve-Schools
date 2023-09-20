@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+           crossorigin=""/>
+
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+           crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [38.16, -96.96],
+              zoom: 4
+          });
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 10,
+               minZoom: 4
+            }).addTo(map);
+
+          var universityIcon = L.icon({
+              iconUrl: 'university.png', // url that links to the icon image file
+              iconSize:     [38, 38], // size of the icon image in pixels
+              iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+              popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+          });
+
+          var marker1 = L.marker([41.98,-87.72], {icon: universityIcon}).addTo(map);
+          var marker2 = L.marker([40.13,-88.29], {icon: universityIcon}).addTo(map);
+		  var marker3 = L.marker([41.91,-87.84], {icon: universityIcon}).addTo(map);
+
+          var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NEIU_Sci.jpg/1024px-NEIU_Sci.jpg" alt="BBH" width="250">';
+          var pic2 = '<img src="https://www.parkland.edu/portals/3/Global/Media/Exterior/exteriorAerial-2000x830.jpg?ver=2017-08-29-170916-980" alt="Parkland" width="250">';
+		  var pic3 = '<img src="https://www.fddb.org/wp-content/uploads/img_news_fulldome_job_opportunity_planetarium_educator_cernan_earth_space_center_1e6c66926e.jpg" alt="Triton" width="250">';
+
+          marker1.bindPopup('<p style="color:blue; font-weight:bold"> Bachelor Degree at NEIU </p>' + pic1);
+          marker2.bindPopup('<p style="color:seagreen; font-weight:bold">Illinois Land Surveying Technician Certificate at Parkland College</p>' + pic2);
+		  marker3.bindPopup('<p style="color:seagreen; font-weight:bold">Associates in Applied Sciences at Triton College</p>' + pic3);
+
+        </script>
+   </body>
+</html>
